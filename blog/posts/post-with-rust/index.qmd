@@ -12,7 +12,7 @@ Rust is cool because it provides an abusive relationship with the compiler
 Taken from [here](https://github.com/evcxr/evcxr/blob/main/evcxr_jupyter/samples/evcxr_jupyter_tour.ipynb).
 
 ```{rust}
-format!("hello rust!!")
+format!("hello rust!")
 ```
 
 This doesn't work for some reason...

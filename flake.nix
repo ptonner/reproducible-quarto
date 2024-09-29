@@ -23,8 +23,8 @@
               logo64 = "${pkgs.jupyter.sitePackages}/ipykernel/resources/logo-64x64.png";
               interrupt_mode = "message";
               argv = [
-                # "${pkgs.evcxr}/bin/evcxr_jupyter"
-                "${pkgs.evcxr}/bin/.evcxr_jupyter-wrapped"
+                "${pkgs.evcxr}/bin/evcxr_jupyter"
+                # "${pkgs.evcxr}/bin/.evcxr_jupyter-wrapped"
                 "--control_file"
                 "{connection_file}"
               ];
@@ -65,7 +65,6 @@
               pfix_sub + "--prefix QUARTO_PYTHON : ${jupyter}/bin/python3";
           }
         );
-        # blog
         blog = pkgs.stdenv.mkDerivation {
           name = "blog";
           src = ./blog;

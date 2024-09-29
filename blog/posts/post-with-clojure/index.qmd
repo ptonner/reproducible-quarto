@@ -11,3 +11,7 @@ Clojure is cool because it make every other language seem like boilerplate.
 ```{clojure}
 (+ 1 2 3)
 ```
+
+```{clojure}
+(reduce + (range 10))
+```

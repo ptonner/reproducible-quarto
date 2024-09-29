@@ -1,3 +1,20 @@
+* Usage
+** Development:
+#+begin_src sh
+  nix develop
+  quarto preview blog
+#+end_src
+
+You can check the status of setup with:
+#+begin_src sh
+  jupyter kernelspec list # should show all required kernels
+  quarto check jupyter # same kernels should show up here
+#+end_src
+
+** Build:
+#+begin_src sh
+  nix build
+#+end_src
 * References
 - [[https://discourse.nixos.org/t/install-custom-kernels-into-jupyter-lab/37502][Install Custom Kernels Into Jupyter Lab - NixOS Discourse]]
 - [[https://www.brodrigues.co/blog/2024-08-27-nix_for_r_part_12/][Reproducible data science with Nix, part 12 -- Nix as a polyglot build automation tool for data science]]
