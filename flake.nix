@@ -13,14 +13,17 @@
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
-        # jupyter
         jupyter = pkgs.jupyter.override {
           definitions = {
             clojure = pkgs.clojupyter.definition;
             python_torch =
               let
-                # python_torch = (builtins.head pkgs.python_torch.nativeBuildInputs);
-                python_torch = pkgs.python3.withPackages (ps: with ps; [ ]);
+                python_torch = pkgs.python3.withPackages (
+                  ps: with ps; [
+                    torch
+                    ps.jupyter
+                  ]
+                );
               in
               {
                 displayName = "PyTorch";
@@ -37,19 +40,15 @@
               };
           };
         };
-        # quarto
-        # quarto = pkgs.quarto.override { python3 = jupyter; };
         quarto = (pkgs.quarto.override { python3 = null; }).overrideAttrs (
           final: prev: {
             preFixup =
-              with builtins;
               let
+                inherit (builtins) stringLength substring;
                 pfix = prev.preFixup;
                 plen = (stringLength pfix);
                 pfix_sub = substring 0 (plen - 1) pfix;
               in
-              # (substring 0  prev.preFixup)
-              # prev.preFixup + "--prefix QUARTO_PYTHON : ${jupyter}/bin/python3";
               pfix_sub + "--prefix QUARTO_PYTHON : ${jupyter}/bin/python3";
           }
         );
@@ -58,7 +57,7 @@
           name = "blog";
           src = ./blog;
           buildInputs = [
-            pkgs.quarto
+            quarto
             jupyter
           ];
           buildPhase = ''

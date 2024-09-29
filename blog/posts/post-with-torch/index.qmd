@@ -1,0 +1,17 @@
+---
+title: "Post With pytorch"
+author: "Peter Tonner"
+date: "2024-09-29"
+categories: [code, python, pytorch]
+jupyter: python_torch
+---
+
+`pytorch` is cool because graduate students don't have to derive gradients anymore
+
+```{python}
+import torch
+x = torch.randn(5)
+x.requires_grad = True
+x.exp().sum().backward()
+x.grad
+```
