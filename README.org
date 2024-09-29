@@ -1,0 +1,3 @@
+* References
+- [[https://discourse.nixos.org/t/install-custom-kernels-into-jupyter-lab/37502][Install Custom Kernels Into Jupyter Lab - NixOS Discourse]]
+- [[https://www.brodrigues.co/blog/2024-08-27-nix_for_r_part_12/][Reproducible data science with Nix, part 12 -- Nix as a polyglot build automation tool for data science]]
