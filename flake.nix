@@ -16,6 +16,19 @@
         jupyter = pkgs.jupyter.override {
           definitions = {
             clojure = pkgs.clojupyter.definition;
+            rust = {
+              displayName = "Rust";
+              language = "rust";
+              logo32 = "${pkgs.jupyter.sitePackages}/ipykernel/resources/logo-32x32.png";
+              logo64 = "${pkgs.jupyter.sitePackages}/ipykernel/resources/logo-64x64.png";
+              interrupt_mode = "message";
+              argv = [
+                # "${pkgs.evcxr}/bin/evcxr_jupyter"
+                "${pkgs.evcxr}/bin/.evcxr_jupyter-wrapped"
+                "--control_file"
+                "{connection_file}"
+              ];
+            };
             python_torch =
               let
                 python_torch = pkgs.python3.withPackages (

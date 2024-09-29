@@ -1,0 +1,50 @@
+---
+title: "Post With Rust"
+author: "Peter Tonner"
+date: "2024-09-29"
+categories: [code, rust]
+jupyter: rust
+---
+
+Rust is cool because it provides an abusive relationship with the compiler
+
+# Examples
+Taken from [here](https://github.com/evcxr/evcxr/blob/main/evcxr_jupyter/samples/evcxr_jupyter_tour.ipynb).
+
+```{rust}
+format!("hello rust!!")
+```
+
+This doesn't work for some reason...
+```{rust}
+// let mut message = "Hello ".to_owned();
+// message.push_str("world!");
+// message
+```
+
+```{rust}
+pub fn fib(x: i32) -> i32 {
+    if x <= 2 {1} else {fib(x - 2) + fib(x - 1)}
+}
+
+(1..13).map(fib).collect::<Vec<i32>>()
+```
+
+```{rust}
+:dep base64 = "0.10.1"
+base64::encode(&vec![1, 2, 3, 4])
+```
+
+```{rust}
+:dep image = "0.23"
+:dep evcxr_image = "1.1"
+use evcxr_image::ImageDisplay;
+
+image::ImageBuffer::from_fn(256, 256, |x, y| {
+    if (x as i32 - y as i32).abs() < 3 {
+        image::Rgb([0, 0, 255])
+    } else {
+        image::Rgb([0, 0, 0])
+    }
+})
+```
